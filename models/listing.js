@@ -2,12 +2,15 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const listingSchema = new Schema({
-    title : {
-        type : String,
-        required : true,
+    title: {
+        type: String,
+        required: true,
     },
-    description : String,
-    image : {
+    description: {
+        type: String,
+        required: true,
+    },
+    image: {
         filename: {
             type: String,
             default: "listingimage",
@@ -15,18 +18,16 @@ const listingSchema = new Schema({
         url: {
             type: String,
             default:
-                "https://unsplash.com/photos/modern-skyscrapers-viewed-from-below-against-the-sky-P0bWv8zkhQI",
+                "https://images.unsplash.com/photo-1501785888041-af3ef285b470",
             set: (v) =>
                 v === ""
-                    ? "https://unsplash.com/photos/modern-skyscrapers-viewed-from-below-against-the-sky-P0bWv8zkhQI"
+                    ? "https://images.unsplash.com/photo-1501785888041-af3ef285b470"
                     : v,
         },
     },
-    price : Number,
-    location : String,
-    country : String,
-   
-
+    price: Number,
+    location: String,
+    country: String,
 });
 
 const Listing = mongoose.model("Listing", listingSchema);
